@@ -2,7 +2,11 @@
 
 Frontend code examples using javascript, typescript, HTML, CSS, etc
 
-## Introduction
+## Languages
+
+[Javascript](javascript/README.md)
+
+## Frameworks
 
 [Written introduction][100]
 
@@ -52,29 +56,3 @@ DOES NOT WORK
       - id: oxlint
         verbose: true
 ```
-
-## Modern Introduction to Javascript
-
-[Tutorial website][300]
-
-[300]: https://javascript.info/
-
-### Help on Javascript
-
-To search on Google
-
-```
-https://google.com/search?q=MDN+parseInt
-```
-
-To search on DuckDuckGo with the command line
-
-```
-ddgr MDN parseInt
-```
-
-### Debug code in a browser: Chrome or Firefox
-
-Press F12 to open the console
-
-Type 'alert("hello")' to display a message.
