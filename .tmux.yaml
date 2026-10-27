@@ -7,11 +7,11 @@ windows:
   shell_command_before:
     - echo initial command
   panes:
-    - shell_command: nvim -S Session.vim
+    - shell_command: echo "pane 1"
       focus: true
-    - shell_command: echo "started shell"
+    - shell_command: echo "pane 2"
 - window_name: git
   layout: even-horizontal
   panes:
-    - shell_command: echo "started shell"
-    - vifm .
+    - jj log -s
+    - eza -lDT
