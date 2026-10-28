@@ -36,7 +36,8 @@ let ageFieldChecked = false;
 
 console.log(nameFieldChecked, ageFieldChecked);
 
-let isGreater = 4 > 1;
+let value = 1;
+let isGreater = 4 > value;
 console.log(isGreater);
 
 // undefined
