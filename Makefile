@@ -10,14 +10,18 @@ tmux:  ## start tmux
 	tmuxp load .tmux.yaml
 
 .PHONY: pre-commit-file
-pre-commit-file:  ## pre-commit for a single file: pre-commit-file fl=<file>
+pre-commit-file:  ## pre-commit-file fl=<file>
 	@test -n "$(fl)" || { echo "fl= not specified"; exit 1; }
 	@test -f "$(fl)" || { echo "$(fl) does not exist"; exit 1; }
 	pre-commit run --files $(fl)
 
-.PHONY: javascript-variables
-javascript-variables:  ## example of javascript variables
-	node ./javascript-fundamentals/variables.js
+.PHONY: pre-commit
+pre-commit:  ## run pre-commit for all files
+	pre-commit run --all-files
+
+.PHONY: js-variables
+js-variables:  ## javascript variables example
+	node javascript-fundamentals/variables.js
 
 .PHONY: markdownlint
 markdownlint:  ## run markdown file lint
