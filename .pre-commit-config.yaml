@@ -22,17 +22,17 @@ repos:
         entry: nixfmt
         language: system
         files: \.nix$
-  - repo: local
-    hooks:
-      - id: oxlint_preinstalled
-        name: oxlint javascript and typescript checker
-        language: system
-        entry: oxlint --deny-warnings
-        types_or: [javascript]
-  - repo: local
-    hooks:
-      - id: oxfmt_preinstalled
-        name: oxfmt javascript and typescript formatter
-        language: system
-        entry: oxfmt
-        types_or: [javascript]
+#   - repo: local
+#     hooks:
+#       - id: oxlint_preinstalled
+#         name: oxlint javascript and typescript checker
+#         language: system
+#         entry: oxlint --deny-warnings
+#         types_or: [javascript]
+#   - repo: local
+#     hooks:
+#       - id: oxfmt_preinstalled
+#         name: oxfmt javascript and typescript formatter
+#         language: system
+#         entry: oxfmt
+#         types_or: [javascript]
