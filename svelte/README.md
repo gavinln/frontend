@@ -1,14 +1,14 @@
 # Svelte
 
 [Svelte][100] is a free, open-source front-end JavaScript framework for
-building web user interfaces. Unlike React or Vue, it compiles components
-into highly optimized vanilla JavaScript at build time rather than shipping
-a runtime library to the browser, resulting in smaller, faster apps.
+building web user interfaces. Unlike React or Vue, it compiles components into
+highly optimized vanilla JavaScript at build time rather than shipping a
+runtime library to the browser, resulting in smaller, faster apps.
 
 [100]: https://svelte.dev/
 
-[npx][110] is a command-line tool bundled with npm that runs Node.js
-packages directly without permanently installing them.     
+[npx][110] is a command-line tool bundled with npm that runs Node.js packages
+directly without permanently installing them.
 
 [110]: https://docs.npmjs.com/cli/v12/commands/npx
 
