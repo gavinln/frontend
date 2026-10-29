@@ -4,8 +4,8 @@
 
 <h1>Svelte examples</h1>
 <ul>
-<li><a href="./basic_svelte">Basic Svelte</a></li>  
-<li><a href="./advanced_svelte">Advanced Svelte</a></li>  
-<li><a href="./basic_sveltekit">Basic SvelteKit</a></li>  
-<li><a href="./advanced_sveltekit">Advanced SvelteKit</a></li>  
+<li><a href="./basic_svelte">Basic Svelte</a></li>
+<li><a href="./advanced_svelte">Advanced Svelte</a></li>
+<li><a href="./basic_sveltekit">Basic SvelteKit</a></li>
+<li><a href="./advanced_sveltekit">Advanced SvelteKit</a></li>
 </ul>
