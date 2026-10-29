@@ -2,7 +2,7 @@ session_name: vue-examples
 start_directory: "."
 windows:
 - window_name: edit-run
-  layout: even-horizontal
+  layout: even-vertical
   focus: true
   shell_command_before:
     - echo initial command
@@ -13,5 +13,5 @@ windows:
 - window_name: git
   layout: even-horizontal
   panes:
-    - jj log -s
-    - eza -lDT
+    - jj log -s && echo jj log -s
+    - eza -lDT && echo eza -lDT
