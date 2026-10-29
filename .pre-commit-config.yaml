@@ -3,23 +3,35 @@
 #
 # Make sure oxlint is in the PATH
 repos:
--   repo: https://github.com/pre-commit/pre-commit-hooks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v3.2.0
     hooks:
-    -   id: trailing-whitespace
-    -   id: end-of-file-fixer
-    -   id: check-yaml
-    -   id: check-added-large-files
--   repo: local
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-added-large-files
+  - repo: https://github.com/google/yamlfmt
+    rev: v0.16.0 # Use the latest version available
     hooks:
-    -   id: oxlint_preinstalled
+      - id: yamlfmt
+  - repo: local
+    hooks:
+      - id: nixfmt
+        name: nixfmt
+        description: Format Nix code with nixfmt
+        entry: nixfmt
+        language: system
+        files: \.nix$
+  - repo: local
+    hooks:
+      - id: oxlint_preinstalled
         name: oxlint javascript and typescript checker
         language: system
         entry: oxlint --deny-warnings
         types_or: [javascript]
--   repo: local
+  - repo: local
     hooks:
-    -   id: oxfmt_preinstalled
+      - id: oxfmt_preinstalled
         name: oxfmt javascript and typescript formatter
         language: system
         entry: oxfmt
