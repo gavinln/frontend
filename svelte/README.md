@@ -41,7 +41,31 @@ npx sv create --template minimal --types ts --add prettier --install npm .
 npm run dev
 ```
 
+4. Enable polling to check for file changes
+
+```
+# add to vite.config.ts
+server: {
+    watch: {
+        usePolling: true,
+    }
+}
+```
+
 4. Go to the server `http://localhost:5173`
+
+5. To add Pico styling install the package
+
+```
+npm install -D @picocss/pico
+```
+
+6. To use Pico styling
+
+```
+// add this inside the script tag
+import '@picocss/pico';
+```
 
 ## Learning Svelte
 
