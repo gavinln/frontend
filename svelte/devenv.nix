@@ -24,7 +24,7 @@
   '';
 
   enterShell = ''
-    echo node: $(node -v | tr -d '\n') 
+    echo node: $(node -v | tr -d '\n')
     echo TypeScript compiler: $(tsc -v | tr -d '\n')
   '';
 
@@ -34,4 +34,3 @@
     git --version | grep --color=auto "${pkgs.git.version}"
   '';
 }
-
