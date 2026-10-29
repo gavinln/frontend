@@ -7,6 +7,42 @@ a runtime library to the browser, resulting in smaller, faster apps.
 
 [100]: https://svelte.dev/
 
+[npx][110] is a command-line tool bundled with npm that runs Node.js
+packages directly without permanently installing them.     
+
+[110]: https://docs.npmjs.com/cli/v12/commands/npx
+
+[prettier][120] is an opinionated code formatter with support for multiple
+web languages.
+
+[120]: https://prettier.io/
+
+[vite][130] is a next-generation frontend build tool and local development server.
+
+[130]: https://vite.dev/
+
+## Create, Build and Run Svelte example
+
+1. Create an empty directory for the `sv-example` app
+
+```
+mkdir sv-example && cd sv-example
+```
+
+2. Create the app
+
+```
+npx sv create --template minimal --types ts --add prettier --install npm .
+```
+
+3. Run the app
+
+```
+npm run dev
+```
+
+4. Go to the server `http://localhost:5173`
+
 ## Learning Svelte
 
 ### Tutorial
