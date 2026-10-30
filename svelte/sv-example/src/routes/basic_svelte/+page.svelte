@@ -19,9 +19,34 @@
     count += 1;
   }
   // 1.2.2. Deep state
+  let numbers = $state([1, 2, 3, 4])
+  function addNumber() {
+    numbers[numbers.length] = numbers.length + 1;
+  }
   // 1.2.3. Derived state
+  let numbers2 = $state([1, 2, 3, 4])
+  function addNumber2() {
+    numbers2[numbers2.length] = numbers2.length + 1;
+  }
+  let total2 = $derived(numbers2.reduce((t, n) => t + n, 0))
   // 1.2.4. Inspecting state
+  let numbers3 = $state([1, 2, 3, 4])
+  function addNumber3() {
+    numbers3[numbers3.length] = numbers3.length + 1;
+    console.log($state.snapshot(numbers3));
+  }
+  $inspect(numbers3);
   // 1.2.5. Effects
+  let elapsed = $state(0);
+  let interval = $state(1000);
+  $effect(() => {
+    const id = setInterval(() => {
+      elapsed += 1;
+    }, interval);
+    return () => {
+      clearInterval(id);
+    };
+  });
   // 1.2.6. Universal reactivity
   // 1.3. Props
   // 1.3.1. Declaring props
@@ -92,9 +117,25 @@
     {count === 1 ? 'time' : 'times'}
   </button>
 <h3>1.2.2. Deep state</h3>
+  <p>{numbers.join(' + ')} = ...</p>
+  <button onclick={addNumber}>
+    Add a number
+  </button>
 <h3>1.2.3. Derived state</h3>
+  <p>{numbers2.join(' + ')} = {total2}</p>
+  <button onclick={addNumber2}>
+    Add a number
+  </button>
 <h3>1.2.4. Inspecting state</h3>
+  <p>{numbers3.join(' + ')} = ...</p>
+  <button onclick={addNumber3}>
+    Add a number
+  </button>
 <h3>1.2.5. Effects</h3>
+  <button onclick={() => interval /= 2}>speed up</button>
+  <button onclick={() => interval *= 2}>slow down</button>
+  <p>elapsed: {elapsed}</p>
+  <p>interval: {interval}</p>
 <h3>1.2.6. Universal reactivity</h3>
 <h2>1.3. Props</h2>
 <h3>1.3.1. Declaring props</h3>
