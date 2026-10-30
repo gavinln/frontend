@@ -35,6 +35,7 @@
   // 3.9.4. Customising the error message
   // 3.9.5. Redirects
 </script>
+
 <h1>3. Basic SvelteKit</h1>
 <h2>3.1. Introduction</h2>
 <h3>3.1.1. What is SvelteKit?</h3>

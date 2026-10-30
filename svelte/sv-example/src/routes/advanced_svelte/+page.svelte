@@ -40,6 +40,7 @@
   // 2.9. Next steps
   // 2.9.1. Congratulations!
 </script>
+
 <h1>2. Advanced Svelte</h1>
 <h2>2.1. Advanced reactivity</h2>
 <h3>2.1.1. Raw state</h3>

@@ -33,6 +33,7 @@
   // 4.7. Conclusion
   // 4.7.1. Next steps
 </script>
+
 <h1>4. Advanced SvelteKit</h1>
 <h2>4.1. Hooks</h2>
 <h3>4.1.1. handle</h3>
