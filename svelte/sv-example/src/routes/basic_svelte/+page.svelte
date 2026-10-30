@@ -8,7 +8,7 @@
   let src="https://www.python.org/static/img/python-logo.png";
   // 1.1.3. Styling
   // 1.1.4. Nested components
-  import Nested from '../Nested.svelte';
+  import Nested from './Nested.svelte';
   // 1.1.5. HTML tags
 	let string = `this string contains some <strong>HTML!!!</strong>`;
   // 1.2. Reactivity
@@ -47,6 +47,7 @@
     };
   });
   // 1.2.6. Universal reactivity
+	import Counter from './Counter.svelte';
   // 1.3. Props
   // 1.3.1. Declaring props
   // 1.3.2. Default values
@@ -136,6 +137,9 @@
   <p>elapsed: {elapsed}</p>
   <p>interval: {interval}</p>
 <h3>1.2.6. Universal reactivity</h3>
+  <Counter />
+  <Counter />
+  <Counter />
 <h2>1.3. Props</h2>
 <h3>1.3.1. Declaring props</h3>
 <h3>1.3.2. Default values</h3>
