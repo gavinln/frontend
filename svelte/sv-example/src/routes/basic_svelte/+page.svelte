@@ -1,4 +1,3 @@
-<!-- vim: set tabstop=2 shiftwidth=2 softtabstop=2 expandtab: -->
 <script lang="ts">
   import '@picocss/pico';
   // 1. Basic Svelte

@@ -1,4 +1,3 @@
-<!-- vim: set tabstop=2 shiftwidth=2 softtabstop=2 expandtab: -->
 <script lang="ts">
   // 3. Basic SvelteKit
   // 3.1. Introduction
