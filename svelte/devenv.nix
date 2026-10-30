@@ -1,4 +1,3 @@
-# vim: tabstop=2 shiftwidth=2 softtabstop=2 expandtab:
 {
   pkgs,
   lib,
@@ -6,7 +5,6 @@
   inputs,
   ...
 }:
-
 {
   # https://devenv.sh/basics/
   env.GREET = "devenv";
