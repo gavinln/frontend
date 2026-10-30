@@ -134,7 +134,7 @@
   <h3>1.3.1. Declaring props</h3>
   <Nested2 answer={42} />
   <h3>1.3.2. Default values</h3>
-  <Nested3 answer={42} />
+  <Nested3 answer={'a comedy'} />
   <Nested3 />
   <h3>1.3.3. Spread props</h3>
   <h2>1.4. Logic</h2>
