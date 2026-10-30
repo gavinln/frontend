@@ -53,15 +53,45 @@
   // 1.3.2. Default values
   import Nested3 from './Nested3.svelte';
   // 1.3.3. Spread props
+  import PackageInfo from './PackageInfo.svelte';
+
+  const pkg = {
+    name: 'svelte',
+    version: 5,
+    description: 'blazing fast',
+    website: 'https://svelte.dev'
+  };
   // 1.4. Logic
   // 1.4.1. If blocks
   // 1.4.2. Else blocks
   // 1.4.3. Else-if blocks
+  let count2 = $state(0);
+
+  function increment2() {
+    count2 += 1;
+  }
   // 1.4.4. Each blocks
+  const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
+  let selected = $state(colors[0]);
   // 1.4.5. Keyed each blocks
+  import Thing from './Thing.svelte';
+  let things = $state([
+    { id: 1, name: 'apple' },
+    { id: 2, name: 'banana' },
+    { id: 3, name: 'carrot' },
+    { id: 4, name: 'doughnut' },
+    { id: 5, name: 'egg' }
+  ]);
   // 1.4.6. Await blocks
+  import { roll } from './utils.js';
+  let promise = $state(roll());
   // 1.5. Events
   // 1.5.1. DOM events
+  let pointer = $state({ x: 0, y: 0 });
+  function onpointermove(event) {
+    pointer.x = event.clientX;
+    pointer.y = event.clientY;
+  }
   // 1.5.2. Inline handlers
   // 1.5.3. Capturing
   // 1.5.4. Component events
@@ -136,15 +166,54 @@
   <Nested3 answer={'a comedy'} />
   <Nested3 />
   <h3>1.3.3. Spread props</h3>
+  <PackageInfo version={pkg.version} description={pkg.description} website={pkg.website} />
+  <PackageInfo {...pkg} />
   <h2>1.4. Logic</h2>
   <h3>1.4.1. If blocks</h3>
   <h3>1.4.2. Else blocks</h3>
   <h3>1.4.3. Else-if blocks</h3>
+  <button onclick={increment2}>
+    Clicked {count2}
+    {count2 === 1 ? 'time' : 'times'}
+  </button>
+  {#if count2 > 10}
+    <p>{count2} is greater than 10</p>
+  {:else if count2 < 5}
+    <p>{count2} is less than 5</p>
+  {:else}
+    <p>{count2} is between 5 and 10</p>
+  {/if}
   <h3>1.4.4. Each blocks</h3>
+  <p style="color: {selected}; font-size: 2rem; font-weight: 600">Pick a color</p>
+  <div>
+    {#each colors as color, i}
+      <button
+        style="background: {color}"
+        aria-label={color}
+        aria-current={selected === color}
+        onclick={() => (selected = color)}>{i + 1}</button
+      >
+    {/each}
+  </div>
   <h3>1.4.5. Keyed each blocks</h3>
+  <button onclick={() => things.shift()}> Remove first thing </button>
+  {#each things as thing (thing.id)}
+    <Thing name={thing.name} />
+  {/each}
   <h3>1.4.6. Await blocks</h3>
+  <button onclick={() => (promise = roll())}> roll the dice </button>
+  {#await promise}
+    <p>...rolling</p>
+  {:then number}
+    <p>you rolled a {number}!</p>
+  {:catch error}
+    <p style="color: red">{error.message}!</p>
+  {/await}
   <h2>1.5. Events</h2>
   <h3>1.5.1. DOM events</h3>
+  <div {onpointermove} role="presentation" id="dom-event">
+    Pointer: {pointer.x} x {pointer.y}
+  </div>
   <h3>1.5.2. Inline handlers</h3>
   <h3>1.5.3. Capturing</h3>
   <h3>1.5.4. Component events</h3>
@@ -180,5 +249,12 @@
     color: goldenrod;
     font-family: 'Comic Sans MS', cursive;
     font-size: 2em;
+  }
+  #dom-event {
+    width: 12rem;
+    height: 12rem;
+    padding: 1rem;
+    border-style: solid;
+    border-color: red;
   }
 </style>
