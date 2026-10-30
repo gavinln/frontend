@@ -1,5 +1,4 @@
 <script lang="ts">
-  import '@picocss/pico';
   // 1. Basic Svelte
   // 1.1. Welcome to Svelte
   // 1.1.1. Your first component
@@ -93,7 +92,7 @@
   // 1.9.8. Key blocks
 </script>
 
-<main class="container">
+<main>
   <h1>1. Basic Svelte</h1>
   <h2>1.1. Welcome to Svelte</h2>
   <h3>1.1.1. Your first component</h3>

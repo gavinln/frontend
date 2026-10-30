@@ -2,6 +2,8 @@
   import favicon from '#lib/assets/favicon.svg';
   import type { LayoutProps } from './$types';
 
+  import '@picocss/pico';
+
   let { children }: LayoutProps = $props();
 </script>
 
