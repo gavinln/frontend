@@ -67,6 +67,41 @@ npm install -D @picocss/pico
 import '@picocss/pico';
 ```
 
+## Lint Code and Fix Format
+
+1. Set code format options in `prettier.config.js`
+
+```
+const config = {
+  useTabs: false,
+  tabWidth: 2,
+};
+```
+
+2. List scripts in package.json
+
+```
+npm run
+```
+
+3. Display the config file used for code format
+
+```
+npx prettier --check --find-config-path src/app.html
+```
+
+4. Run lint to check code
+
+```
+npm run lint
+```
+
+5. Format code
+
+```
+npm run format
+```
+
 ## Learning Svelte
 
 ### Tutorial
