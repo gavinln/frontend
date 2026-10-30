@@ -50,7 +50,9 @@
 	import Counter from './Counter.svelte';
   // 1.3. Props
   // 1.3.1. Declaring props
+	import Nested2 from './Nested2.svelte';
   // 1.3.2. Default values
+	import Nested3 from './Nested3.svelte';
   // 1.3.3. Spread props
   // 1.4. Logic
   // 1.4.1. If blocks
@@ -142,7 +144,10 @@
   <Counter />
 <h2>1.3. Props</h2>
 <h3>1.3.1. Declaring props</h3>
+  <Nested2 answer={42} />
 <h3>1.3.2. Default values</h3>
+  <Nested3 answer={42} />
+  <Nested3 />
 <h3>1.3.3. Spread props</h3>
 <h2>1.4. Logic</h2>
 <h3>1.4.1. If blocks</h3>
