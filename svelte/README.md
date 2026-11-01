@@ -131,3 +131,9 @@ npm run format
 [Complete Svelte 5 Course][320] 3:14:30
 
 [320]: https://www.youtube.com/watch?v=B2MhkPtBWs4
+
+### Agentic Engineering with Svelte
+
+Youtube [Video Series][400]
+
+[400]: https://www.youtube.com/watch?v=&list=PLdAi-nB9AYut1ixrraX3E96rNNVj3iq4F
