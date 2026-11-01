@@ -100,7 +100,21 @@
   import Stepper from './Stepper.svelte';
 
   let value = $state(0);
-  // 1.5.5. Spreading events
+  // 2.5.5. Spreading events
+  import BigRedButton from './BigRedButton.svelte';
+
+  import horn from '#lib/assets/horn.mp3';
+  // import horn from './horn.mp3';
+
+  const audio = new Audio();
+  audio.src = horn;
+
+  function honk() {
+    audio.load();
+    audio.play();
+  }
+  // 1.6. Bindings
+  // 1.6.1. Text inputs
   // 1.6.2. Numeric inputs
   // 1.6.5. Group inputs
   // 1.6.6. Select multiple
@@ -237,7 +251,9 @@
   <h3>1.5.4. Component events</h3>
   <p>The current value is {value}</p>
   <Stepper increment={() => (value += 1)} decrement={() => (value -= 1)} />
-  <h3>1.5.5. Spreading events</h3>
+  <h3>2.5.5. Spreading events</h3>
+  <!-- <BigRedButton onclick={honk} /> -->
+  <BigRedButton onclick={honk} />
   <h2>1.6. Bindings</h2>
   <h3>1.6.1. Text inputs</h3>
   <h3>1.6.2. Numeric inputs</h3>
