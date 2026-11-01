@@ -521,13 +521,13 @@ keys or equivalent protections.
 The following comparison illustrates how these concepts relate to different
 frontend frameworks.
 
-| Feature              | React                | SolidJS           | Svelte 5          |
-| -------------------- | -------------------- | ----------------- | ----------------- |
-| Primary reactivity   | Component state      | Signals           | Runes             |
-| Virtual DOM          | Yes                  | No                | No                |
-| Fine-grained updates | Through optimization | Yes               | Yes               |
-| Manual memoization   | Commonly used        | Less common       | Often unnecessary |
-| Streaming            | Yes                  | With integrations | With integrations |
+| Feature              | React                | Svelte 5          |
+| -------------------- | -------------------- | ----------------- |
+| Primary reactivity   | Component state      | Runes             |
+| Virtual DOM          | Yes                  | No                |
+| Fine-grained updates | Through optimization | Yes               |
+| Manual memoization   | Commonly used        | Often unnecessary |
+| Streaming            | Yes                  | With integrations |
 
 Some important distinctions:
 

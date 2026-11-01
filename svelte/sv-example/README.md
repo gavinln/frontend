@@ -1,6 +1,8 @@
 # sv
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+Everything you need to build a Svelte project, powered by [`sv`][100]
+
+[100]: https://github.com/sveltejs/cli
 
 ## Creating a project
 
@@ -34,7 +36,7 @@ npx sv add tailwindcss
 
 ## Developing
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Start a development server:
 
 ```sh
 npm run dev
@@ -53,4 +55,7 @@ npm run build
 
 You can preview the production build with `npm run preview`.
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+To deploy your app, you may need to install an [adapter][200] for your target
+environment.
+
+[200]: https://svelte.dev/docs/kit/adapters
