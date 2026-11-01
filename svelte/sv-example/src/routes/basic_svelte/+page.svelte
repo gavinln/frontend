@@ -94,13 +94,14 @@
   }
   // 1.5.2. Inline handlers
   // 1.5.3. Capturing
+  let bubbling: string[] = $state([]);
+  let capturing: string[] = $state([]);
   // 1.5.4. Component events
+  import Stepper from './Stepper.svelte';
+
+  let value = $state(0);
   // 1.5.5. Spreading events
-  // 1.6. Bindings
-  // 1.6.1. Text inputs
   // 1.6.2. Numeric inputs
-  // 1.6.3. Checkbox inputs
-  // 1.6.4. Select bindings
   // 1.6.5. Group inputs
   // 1.6.6. Select multiple
   // 1.6.7. Textarea inputs
@@ -216,7 +217,26 @@
   </div>
   <h3>1.5.2. Inline handlers</h3>
   <h3>1.5.3. Capturing</h3>
+  <div onkeydown={(e) => bubbling.push('<div> ' + e.key)} role="presentation">
+    <input onkeydown={(e) => bubbling.push('<input> ' + e.key)} />
+  </div>
+  <ul>
+    {#each bubbling as line}
+      <li>{line}</li>
+    {/each}
+  </ul>
+
+  <div onkeydowncapture={(e) => capturing.push('<div> ' + e.key)} role="presentation">
+    <input onkeydowncapture={(e) => capturing.push('<input> ' + e.key)} />
+  </div>
+  <ul>
+    {#each capturing as line}
+      <li>{line}</li>
+    {/each}
+  </ul>
   <h3>1.5.4. Component events</h3>
+  <p>The current value is {value}</p>
+  <Stepper increment={() => (value += 1)} decrement={() => (value -= 1)} />
   <h3>1.5.5. Spreading events</h3>
   <h2>1.6. Bindings</h2>
   <h3>1.6.1. Text inputs</h3>
