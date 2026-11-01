@@ -25,7 +25,8 @@ js-variables:  ## javascript variables example
 
 .PHONY: markdownlint
 markdownlint:  ## run markdown file lint
-	markdownlint --disable MD029 MD040 -- '**/*.md'
+	@markdownlint --disable MD029 MD040 \
+		-i 'svelte/sv-example/node_modules' -- '**/*.md'
 
 .PHONY: oxlint
 oxlint:  ## lint javascript files

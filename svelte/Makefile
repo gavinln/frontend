@@ -16,7 +16,3 @@ oxlint:  ## lint javascript files
 .PHONY: oxfmt
 oxfmt:  ## format javascript files
 	oxfmt javascript-fundamentals/*.js
-
-.PHONY: svfmt
-svfmt:  ## format svelte files
-	npx prettier --use-tabs false
