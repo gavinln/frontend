@@ -7,8 +7,8 @@ help:  ## help for this Makefile
 
 .PHONY: pcheck
 pcheck:  ## prettier check
-	npx prettier --config prettier.config.js -c .
+	npx prettier --cache --config prettier.config.js -c .
 
 .PHONY: pwrite
 pwrite:  ## prettier write
-	npx prettier --config prettier.config.js -w .
+	npx prettier --cache --log-level=log --config prettier.config.js -w .
