@@ -126,6 +126,27 @@
   // 1.6.2. Numeric inputs
   let numeric_a = $state(1);
   let numeric_b = $state(2);
+
+  // 1.6.3. Checkbox inputs
+  let yes = $state(false);
+
+  // 1.6.4. Select bindings
+  const text = 'What is another personal fact ' + 'that an attacker could easily find with Google?';
+  let questions = [
+    { id: 1, text: `Where did you go to school?` },
+    { id: 2, text: `What is your mother's name?` },
+    { id: 3, text: text }
+  ];
+
+  let chosen = $state();
+
+  let answer = $state('');
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    alert(`answered question ${chosen.id} (${chosen.text}) with "${answer}"`);
+  }
   // 1.6.5. Group inputs
   // 1.6.6. Select multiple
   // 1.6.7. Textarea inputs
@@ -281,7 +302,38 @@
   <p>{numeric_a} + {numeric_b} = {numeric_a + numeric_b}</p>
 
   <h3>1.6.3. Checkbox inputs</h3>
+  <label>
+    <input type="checkbox" bind:checked={yes} />
+    Yes! Send me regular email spam
+  </label>
+
+  {#if yes}
+    <p>Thank you. We will bombard your inbox and sell your personal details.</p>
+  {:else}
+    <p>You must opt in to continue. If you're not paying, you're the product.</p>
+  {/if}
+
+  <button disabled={!yes}>Subscribe</button>
   <h3>1.6.4. Select bindings</h3>
+  <p>Insecurity questions</p>
+
+  <form onsubmit={handleSubmit}>
+    <select bind:value={chosen} onchange={() => (answer = '')}>
+      {#each questions as question}
+        <option value={question}>
+          {question.text}
+        </option>
+      {/each}
+    </select>
+
+    <input bind:value={answer} />
+
+    <button disabled={!answer} type="submit"> Submit </button>
+  </form>
+
+  <p>
+    chosen question {chosen ? chosen.id : '[waiting...]'}
+  </p>
   <h3>1.6.5. Group inputs</h3>
   <h3>1.6.6. Select multiple</h3>
   <h3>1.6.7. Textarea inputs</h3>
