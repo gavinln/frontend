@@ -108,6 +108,17 @@
 
   const audio = new Audio();
   audio.src = horn;
+  import { onMount } from 'svelte';
+
+  let audio;
+
+  onMount(() => {
+    audio = new Audio();
+    audio.src = horn;
+  });
+
+  // const audio = new Audio();
+  // audio.src = horn;
 
   function honk() {
     audio.load();
