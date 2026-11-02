@@ -104,10 +104,6 @@
   import BigRedButton from './BigRedButton.svelte';
 
   import horn from '#lib/assets/horn.mp3';
-  // import horn from './horn.mp3';
-
-  const audio = new Audio();
-  audio.src = horn;
   import { onMount } from 'svelte';
 
   let audio;
@@ -126,7 +122,10 @@
   }
   // 1.6. Bindings
   // 1.6.1. Text inputs
+  let name2 = $state('world');
   // 1.6.2. Numeric inputs
+  let numeric_a = $state(1);
+  let numeric_b = $state(2);
   // 1.6.5. Group inputs
   // 1.6.6. Select multiple
   // 1.6.7. Textarea inputs
@@ -267,7 +266,20 @@
   <BigRedButton onclick={honk} />
   <h2>1.6. Bindings</h2>
   <h3>1.6.1. Text inputs</h3>
+  <input bind:value={name2} />
+  <p>Hello {name2}!</p>
   <h3>1.6.2. Numeric inputs</h3>
+  <label>
+    <input type="number" bind:value={numeric_a} min="0" max="10" />
+    <input type="range" bind:value={numeric_a} min="0" max="10" />
+  </label>
+
+  <label>
+    <input type="number" bind:value={numeric_b} min="0" max="10" />
+    <input type="range" bind:value={numeric_b} min="0" max="10" />
+  </label>
+  <p>{numeric_a} + {numeric_b} = {numeric_a + numeric_b}</p>
+
   <h3>1.6.3. Checkbox inputs</h3>
   <h3>1.6.4. Select bindings</h3>
   <h3>1.6.5. Group inputs</h3>
