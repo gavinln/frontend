@@ -12,3 +12,13 @@ pcheck:  ## prettier check
 .PHONY: pwrite
 pwrite:  ## prettier write
 	npx prettier --cache --log-level=log --config prettier.config.js -w .
+
+.PHONY: run
+run:  ## run the dev server on http://127.0.0.1:5173/
+	@echo http://127.0.0.1:5173/
+	npm run dev
+
+.PHONY: ctags
+ctags:  ## run ctags on files recursively
+	# ctags --langmap=XML:+.svelte --exclude=node_modules --list-excludes -V -R .
+	ctags --langmap=XML:+.svelte --exclude=node_modules -V -R .
