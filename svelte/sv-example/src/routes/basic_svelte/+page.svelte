@@ -165,8 +165,10 @@
   let value2 = $state(`Some words are *italic*, some are **bold**\n\n- lists\n- are\n- cool`);
   // 1.7. Classes and styles
   // 1.7.1. The class attribute
+  let flipped = $state(false);
   // 1.7.2. The style directive
   // 1.7.3. Component styles
+  import Box from './Box.svelte';
   // 1.8. Attachments
   // 1.8.1. The attach tag
   // 1.8.2. Attachment factories
@@ -403,7 +405,7 @@
     <p>
       You ordered {scoops2}
       {scoops2 === 1 ? 'scoop' : 'scoops'}
-      of {formatter.format(flavours2)}
+      of {formatter2.format(flavours2)}
     </p>
   {/if}
   <h3>1.6.7. Textarea inputs</h3>
@@ -417,32 +419,25 @@
   <h2>1.7. Classes and styles</h2>
   <h3>1.7.1. The class attribute</h3>
 
-  <div class="no-pico container2">
+  <div id="container2" class="no-pico">
     Flip the card
-    <button class="card2">
-      <div class="front2">
-        <span class="symbol2">♠</span>
+    <button class="card2 {flipped ? 'flipped' : ''}" onclick={() => (flipped = !flipped)}>
+      <div id="front2">
+        <span id="symbol2">♠</span>
       </div>
-      <div class="back2">
-        <div class="pattern2"></div>
-      </div>
-    </button>
-  </div>
-
-  <div class="no-pico container2">
-    Flip the card
-    <button class="card2 flipped">
-      <div class="front2">
-        <span class="symbol2">♠</span>
-      </div>
-      <div class="back2">
-        <div class="pattern2"></div>
+      <div id="back2">
+        <div id="pattern2"></div>
       </div>
     </button>
   </div>
 
   <h3>1.7.2. The style directive</h3>
   <h3>1.7.3. Component styles</h3>
+  <div class="boxes">
+    <Box --color="firebrick" />
+    <Box --color="forestgreen" />
+    <Box --color="steelblue" />
+  </div>
   <h2>1.8. Attachments</h2>
   <h3>1.8.1. The attach tag</h3>
   <h3>1.8.2. Attachment factories</h3>
@@ -474,7 +469,7 @@
   .no-pico * {
     all: revert;
   }
-  .container2 {
+  #container2 {
     --bg-1: hsl(0, 0%, 100%);
     --bg-2: hsl(206, 20%, 90%);
     --bg-3: hsl(206, 20%, 80%);
@@ -506,8 +501,8 @@
     transform: rotateY(0);
   }
 
-  .front2,
-  .back2 {
+  #front2,
+  #back2 {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -523,7 +518,7 @@
     padding: 2em;
   }
 
-  .front2 {
+  #front2 {
     background:
       url(./svelte-logo.svg) no-repeat 5em 5em,
       url(./svelte-logo.svg) no-repeat calc(100% - 5em) calc(100% - 5em);
@@ -532,16 +527,16 @@
       8em 8em;
   }
 
-  .back2 {
+  #back2 {
     transform: rotateY(180deg);
   }
 
-  .symbol2 {
+  #symbol2 {
     font-size: 30em;
     color: black;
   }
 
-  .pattern2 {
+  #pattern2 {
     width: 100%;
     height: 100%;
     background-color: var(--bg-2);
