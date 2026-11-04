@@ -8,11 +8,3 @@ help:  ## help for this Makefile
 .PHONY: shell
 shell:  ## start devenv shell
 	devenv shell
-
-.PHONY: oxlint
-oxlint:  ## lint javascript files
-	oxlint javascript-fundamentals/*.js
-
-.PHONY: oxfmt
-oxfmt:  ## format javascript files
-	oxfmt javascript-fundamentals/*.js
