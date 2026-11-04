@@ -100,7 +100,7 @@
   import Stepper from './Stepper.svelte';
 
   let value = $state(0);
-  // 2.5.5. Spreading events
+  // 1.5.5. Spreading events
   import BigRedButton from './BigRedButton.svelte';
 
   import horn from '#lib/assets/horn.mp3';
@@ -148,8 +148,21 @@
     alert(`answered question ${chosen.id} (${chosen.text}) with "${answer}"`);
   }
   // 1.6.5. Group inputs
+  let scoops = $state(1);
+  let flavours = $state([]);
+
+  const formatter = new Intl.ListFormat('en', { style: 'long', type: 'conjunction' });
   // 1.6.6. Select multiple
+
+  let scoops2 = $state(1);
+  let flavours2 = $state([]);
+
+  const formatter2 = new Intl.ListFormat('en', { style: 'long', type: 'conjunction' });
+
   // 1.6.7. Textarea inputs
+  import { marked } from 'marked';
+
+  let value2 = $state(`Some words are *italic*, some are **bold**\n\n- lists\n- are\n- cool`);
   // 1.7. Classes and styles
   // 1.7.1. The class attribute
   // 1.7.2. The style directive
@@ -282,7 +295,7 @@
   <h3>1.5.4. Component events</h3>
   <p>The current value is {value}</p>
   <Stepper increment={() => (value += 1)} decrement={() => (value -= 1)} />
-  <h3>2.5.5. Spreading events</h3>
+  <h3>1.5.5. Spreading events</h3>
   <!-- <BigRedButton onclick={honk} /> -->
   <BigRedButton onclick={honk} />
   <h2>1.6. Bindings</h2>
@@ -335,10 +348,99 @@
     chosen question {chosen ? chosen.id : '[waiting...]'}
   </p>
   <h3>1.6.5. Group inputs</h3>
+  <p>Size</p>
+  {#each [1, 2, 3] as number}
+    <label>
+      <input type="radio" name="scoops" value={number} bind:group={scoops} />
+      {number}
+      {number === 1 ? 'scoop' : 'scoops'}
+    </label>
+  {/each}
+
+  <p>Flavours</p>
+  {#each ['cookies and cream', 'mint choc chip', 'raspberry ripple'] as flavour}
+    <label>
+      <input type="checkbox" name="flavours" value={flavour} bind:group={flavours} />
+      {flavour}
+    </label>
+  {/each}
+
+  {#if flavours.length === 0}
+    <p>Please select at least one flavour</p>
+  {:else if flavours.length > scoops}
+    <p>Can't order more flavours than scoops!</p>
+  {:else}
+    <p>
+      You ordered {scoops}
+      {scoops === 1 ? 'scoop' : 'scoops'}
+      of {formatter.format(flavours)}
+    </p>
+  {/if}
   <h3>1.6.6. Select multiple</h3>
+
+  <p>Size</p>
+
+  {#each [1, 2, 3] as number}
+    <label>
+      <input type="radio" name="scoops2" value={number} bind:group={scoops2} />
+
+      {number}
+      {number === 1 ? 'scoop' : 'scoops'}
+    </label>
+  {/each}
+
+  <p>Flavours</p>
+  <select multiple bind:value={flavours2}>
+    {#each ['cookies and cream', 'mint choc chip', 'raspberry ripple'] as flavour}
+      <option>{flavour}</option>
+    {/each}
+  </select>
+  {#if flavours2.length === 0}
+    <p>Please select at least one flavour</p>
+  {:else if flavours2.length > scoops2}
+    <p>Can't order more flavours than scoops!</p>
+  {:else}
+    <p>
+      You ordered {scoops2}
+      {scoops2 === 1 ? 'scoop' : 'scoops'}
+      of {formatter.format(flavours2)}
+    </p>
+  {/if}
   <h3>1.6.7. Textarea inputs</h3>
+  <div class="grid">
+    input
+    <textarea bind:value={value2}>{value2}</textarea>
+
+    output
+    <div>{@html marked(value2)}</div>
+  </div>
   <h2>1.7. Classes and styles</h2>
   <h3>1.7.1. The class attribute</h3>
+
+  <div class="no-pico container2">
+    Flip the card
+    <button class="card2">
+      <div class="front2">
+        <span class="symbol2">♠</span>
+      </div>
+      <div class="back2">
+        <div class="pattern2"></div>
+      </div>
+    </button>
+  </div>
+
+  <div class="no-pico container2">
+    Flip the card
+    <button class="card2 flipped">
+      <div class="front2">
+        <span class="symbol2">♠</span>
+      </div>
+      <div class="back2">
+        <div class="pattern2"></div>
+      </div>
+    </button>
+  </div>
+
   <h3>1.7.2. The style directive</h3>
   <h3>1.7.3. Component styles</h3>
   <h2>1.8. Attachments</h2>
@@ -367,5 +469,99 @@
     padding: 1rem;
     border-style: solid;
     border-color: red;
+  }
+  .no-pico,
+  .no-pico * {
+    all: revert;
+  }
+  .container2 {
+    --bg-1: hsl(0, 0%, 100%);
+    --bg-2: hsl(206, 20%, 90%);
+    --bg-3: hsl(206, 20%, 80%);
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    perspective: 100vh;
+  }
+
+  .card2 {
+    position: relative;
+    aspect-ratio: 2.5 / 3.5;
+    font-size: min(1vh, 0.25rem);
+    height: 80em;
+    background: var(--bg-1);
+    border-radius: 2em;
+    transform: rotateY(180deg);
+    transition: transform 0.4s;
+    transform-style: preserve-3d;
+    padding: 0;
+    user-select: none;
+    cursor: pointer;
+  }
+
+  .card2.flipped {
+    transform: rotateY(0);
+  }
+
+  .front2,
+  .back2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    backface-visibility: hidden;
+    border-radius: 2em;
+    border: 1px solid var(--fg-2);
+    box-sizing: border-box;
+    padding: 2em;
+  }
+
+  .front2 {
+    background:
+      url(./svelte-logo.svg) no-repeat 5em 5em,
+      url(./svelte-logo.svg) no-repeat calc(100% - 5em) calc(100% - 5em);
+    background-size:
+      8em 8em,
+      8em 8em;
+  }
+
+  .back2 {
+    transform: rotateY(180deg);
+  }
+
+  .symbol2 {
+    font-size: 30em;
+    color: black;
+  }
+
+  .pattern2 {
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-2);
+    /* pattern from https://projects.verou.me/css3patterns/#marrakesh */
+    background-image:
+      radial-gradient(var(--bg-3) 0.9em, transparent 1em),
+      repeating-radial-gradient(
+        var(--bg-3) 0,
+        var(--bg-3) 0.4em,
+        transparent 0.5em,
+        transparent 2em,
+        var(--bg-3) 2.1em,
+        var(--bg-3) 2.5em,
+        transparent 2.6em,
+        transparent 5em
+      );
+    background-size:
+      3em 3em,
+      9em 9em;
+    background-position: 0 0;
+    border-radius: 1em;
   }
 </style>
