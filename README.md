@@ -50,9 +50,9 @@ echo "npx lint-staged" > .husky/pre-commit
 DOES NOT WORK
 
 ```yaml
--   repo: https://github.com/oxc-project/mirrors-oxlint
-    rev: v1.58.0
-    hooks:
+- repo: https://github.com/oxc-project/mirrors-oxlint
+  rev: v1.58.0
+  hooks:
       - id: oxlint
         verbose: true
 ```

@@ -64,7 +64,7 @@ npm install -D @picocss/pico
 
 ```typescript
 // add this inside the script tag
-import '@picocss/pico';
+import "@picocss/pico";
 ```
 
 ## Lint Code and Fix Format
@@ -73,8 +73,8 @@ import '@picocss/pico';
 
 ```javascript
 const config = {
-  useTabs: false,
-  tabWidth: 2,
+    useTabs: false,
+    tabWidth: 2,
 };
 ```
 
