@@ -2,36 +2,52 @@ SCRIPT_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 
 .PHONY: help
 .DEFAULT_GOAL=help
-help:  ## help for this Makefile
+help: ## help for this Makefile
 	@grep -E '^[a-zA-Z0-9_\-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
 .PHONY: tmux
-tmux:  ## start tmux
+tmux: ## start tmux
 	tmuxp load .tmux.yaml
 
 .PHONY: pre-commit-file
-pre-commit-file:  ## pre-commit-file fl=<file>
+pre-commit-file: ## pre-commit-file fl=<file>
 	@test -n "$(fl)" || { echo "fl= not specified"; exit 1; }
 	@test -f "$(fl)" || { echo "$(fl) does not exist"; exit 1; }
 	pre-commit run --files $(fl)
 
 .PHONY: pre-commit
-pre-commit:  ## run pre-commit for all files
+pre-commit: ## run pre-commit for all files
 	pre-commit run --all-files
 
 .PHONY: js-variables
-js-variables:  ## javascript variables example
+js-variables: ## javascript variables example
 	node javascript-fundamentals/variables.js
 
 .PHONY: markdownlint
-markdownlint:  ## run markdown file lint
+markdownlint: ## run markdown file lint
 	@markdownlint --disable MD029 MD040 \
 		-i 'svelte/sv-example/node_modules' -- '**/*.md'
 
 .PHONY: oxlint
-oxlint:  ## lint javascript files
+oxlint: ## lint javascript files
 	oxlint javascript-fundamentals/*.js
 
 .PHONY: oxfmt
-oxfmt:  ## format javascript files
-	oxfmt javascript-fundamentals/*.js
+oxfmt: ## format files
+	# oxfmt javascript-fundamentals/*.js
+	oxfmt $(shell fd -t f -g '*.md')
+
+.PHONY: oxcheck
+oxcheck: ## check files format using oxfmt
+	oxfmt --check $(shell fd -t f -g '*.md')
+
+.PHONY: makecheck
+makecheck: ## check Makefile format using mbake
+	uvx mbake format --config .bake.toml -c $(shell fd -t f -g 'Makefile')
+
+.PHONY: makefmt
+makefmt: ## format Makefile format using mbake
+	uvx mbake format --config .bake.toml $(shell fd -t f -g 'Makefile')
+
+# format HTML, Markdown code blocks, JSON, YAML, TOML, JavaScript, TypeScript
+#        JSX, TSX, Vue, Stylesheets, GraphQL with oxfmt
