@@ -51,3 +51,11 @@ makefmt: ## format Makefile format using mbake
 
 # format HTML, Markdown code blocks, JSON, YAML, TOML, JavaScript, TypeScript
 #        JSX, TSX, Vue, Stylesheets, GraphQL with oxfmt
+#
+# setup lint and format for the following
+# .nix - nixfmt
+# .svelte - prettier
+# .js - oxfmt
+# .yaml - oxfmt
+# .yml - oxfmt
+# .py - ruff
