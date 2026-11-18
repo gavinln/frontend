@@ -26,7 +26,7 @@ Frontend code examples using javascript, typescript, HTML, CSS, etc
 
 1. Using lint-staged (Recommended for Node.js)
 
-```
+```sh
 npm install -D oxlint lint-staged husky
 ```
 
@@ -34,9 +34,9 @@ npm install -D oxlint lint-staged husky
 
 ```json
 {
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx}": "oxlint --fix"
-  }
+    "lint-staged": {
+        "*.{js,jsx,ts,tsx}": "oxlint --fix"
+    }
 }
 ```
 
@@ -49,7 +49,7 @@ echo "npx lint-staged" > .husky/pre-commit
 
 DOES NOT WORK
 
-```
+```yaml
 -   repo: https://github.com/oxc-project/mirrors-oxlint
     rev: v1.58.0
     hooks:

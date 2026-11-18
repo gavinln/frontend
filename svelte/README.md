@@ -25,25 +25,25 @@ web languages.
 
 1. Create an empty directory for the `sv-example` app
 
-```
+```sh
 mkdir sv-example && cd sv-example
 ```
 
 2. Create the app
 
-```
+```sh
 npx sv create --template minimal --types ts --add prettier --install npm .
 ```
 
 3. Run the app
 
-```
+```sh
 npm run dev
 ```
 
 4. Enable polling to check for file changes
 
-```
+```typescript
 # add to vite.config.ts
 server: {
     watch: {
@@ -56,13 +56,13 @@ server: {
 
 5. To add Pico styling install the package
 
-```
+```sh
 npm install -D @picocss/pico
 ```
 
 6. To use Pico styling
 
-```
+```typescript
 // add this inside the script tag
 import '@picocss/pico';
 ```
@@ -71,7 +71,7 @@ import '@picocss/pico';
 
 1. Set code format options in `prettier.config.js`
 
-```
+```javascript
 const config = {
   useTabs: false,
   tabWidth: 2,
@@ -80,13 +80,13 @@ const config = {
 
 2. List scripts in package.json
 
-```
+```sh
 npm run
 ```
 
 3. Display the config file used for code format
 
-```
+```sh
 npx prettier --check --find-config-path src/app.html
 ```
 
@@ -98,7 +98,7 @@ npm run lint
 
 5. Format code
 
-```
+```sh
 npm run format
 ```
 
