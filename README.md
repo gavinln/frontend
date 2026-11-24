@@ -8,19 +8,7 @@ Frontend code examples using javascript, typescript, HTML, CSS, etc
 
 ## Frameworks
 
-[Written introduction][100]
-
-[100]: https://vuejs.org/guide/introduction.html
-
-### Vue.js video tutorials
-
-[Crash course][200]
-
-[200]: https://www.youtube.com/watch?v=VeNfHj6MhgA
-
-[Multiple tutorials][210]
-
-[210]: https://www.youtube.com/playlist?list=PL4cUxeGkcC9hYYGbV60Vq3IXYNfDk8At1
+[Svelte](./svelte/README.md)
 
 ## Try this for node.js
 
